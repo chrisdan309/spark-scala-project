@@ -1,0 +1,43 @@
+# === SCALA & SBT ===
+target/
+project/target/
+project/project/
+.metals/
+.bloop/
+.idea/
+.cache/
+.history
+.scala_history
+*.class
+*.log
+
+# === VSCODE ===
+.vscode/
+
+# === VIRTUAL ENVIRONMENTS ===
+.venv/
+env/
+ENV/
+
+# === OS FILES ===
+.DS_Store
+Thumbs.db
+
+# === DATABASE DRIVERS / BINARIES ===
+# Si quieres ignorar todos los .jar excepto uno en específico, usa una excepción
+# *.jar
+# !postgresql-42.7.6.jar
+
+# === DOCKER ===
+**/.docker/
+**/docker-data/
+**/pgdata/
+**/volumes/
+
+# === LOGS ===
+*.log
+
+# === MISC ===
+*.bak
+*.tmp
+*.swp
