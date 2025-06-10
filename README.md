@@ -6,6 +6,12 @@ The dataset used is from the following page:
 https://www.datosabiertos.gob.pe/dataset/resultados-de-evaluaci%C3%B3n-censal-regional-nivel-primaria-de-los-distritos-de-ventanilla-y-mi
 ```
 
+Command to run files
+
+```sh
+start-spark-shell -i scripts/2_A_1.scala
+```
+
 Command to load the data into the database:
 
 ```sh
