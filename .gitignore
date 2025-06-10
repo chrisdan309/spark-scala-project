@@ -19,6 +19,7 @@ project/project/
 env/
 ENV/
 
+metastore_db/
 # === OS FILES ===
 .DS_Store
 Thumbs.db

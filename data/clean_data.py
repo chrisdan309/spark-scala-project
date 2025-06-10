@@ -6,6 +6,13 @@ input_dir = "raw"
 output_dir = "clean"
 os.makedirs(output_dir, exist_ok=True)
 
+def limpiar_porcentajes(df):
+    for col in df.columns:
+        if df[col].dtype == object and df[col].astype(str).str.contains('%').any():
+            df[col] = df[col].astype(str).str.replace('%', '', regex=False).str.strip()
+            df[col] = pd.to_numeric(df[col], errors='coerce')  # convierte a float
+    return df
+
 for filename in os.listdir(input_dir):
     if not filename.endswith(".csv"):
         continue
@@ -56,8 +63,10 @@ for filename in os.listdir(input_dir):
             df.columns = [col.strip() for col in df.columns]
 
             df = df[df.iloc[:, 0].notna()]
-            df = df[~df.iloc[:, 0].astype(str).str.upper().str.contains("ITEM")]  # No contenga 'ITEM'
+            df = df[~df.iloc[:, 0].astype(str).str.upper().str.contains("ITEM")]
             df.dropna(axis=0, thresh=5, inplace=True)
+
+            df = limpiar_porcentajes(df)  # <-- Limpieza de columnas con "%"
 
             base_name = os.path.splitext(filename)[0]
             section_suffix = section_names[i] or f"seccion_extra_{i+1}"
